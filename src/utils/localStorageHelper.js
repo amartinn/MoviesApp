@@ -20,6 +20,9 @@ const localStorageHelper = {
         const items = JSON.parse(localStorage.getItem(storageItemName))
         if(items == null) return false;
         return items.indexOf(movieId) !== -1;
-    }
+    },
+    getFavoriteMovies: () => (
+        JSON.parse(localStorage.getItem(storageItemName))
+    )
 }
 export default localStorageHelper
