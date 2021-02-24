@@ -1,14 +1,17 @@
 import React from 'react'
 import {Layout} from './components'
-import Home from './pages/home/home'
+import {Home,Search} from './pages'
 import {BrowserRouter as Router,Switch,Route} from 'react-router-dom'
 const App = () => 
    {
    return (<>
    <Layout>
-     <Router>
+     <Router> 
        <Switch>
          <Route exact path="/" component={Home} ></Route>
+       </Switch>
+       <Switch>
+         <Route exact path="/search/:query" component={Search} ></Route>
        </Switch>
      </Router>
    </Layout>
