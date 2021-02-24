@@ -4,18 +4,17 @@ import {Home,Search} from './pages'
 import {BrowserRouter as Router,Switch,Route} from 'react-router-dom'
 const App = () => 
    {
-   return (<>
+   return (
+    <Router> 
    <Layout>
-     <Router> 
        <Switch>
          <Route exact path="/" component={Home} ></Route>
        </Switch>
        <Switch>
-         <Route exact path="/search/:query" component={Search} ></Route>
+         <Route path="/search/:query" component={Search} ></Route>
        </Switch>
+       </Layout>
      </Router>
-   </Layout>
-   </>
    );
    }
 
