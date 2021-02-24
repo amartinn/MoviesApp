@@ -12,7 +12,7 @@ const FavoriteMovieList = () => (
         <FavoriteMovie imageUrl="http://placehold.it/200x400"/>
         <FavoriteMovie imageUrl="http://placehold.it/200x400"/>
         <FavoriteMovie imageUrl="http://placehold.it/200x400"/>
-   </Container>\
+   </Container>
    </>
 )
 

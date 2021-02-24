@@ -1,12 +1,13 @@
 import React from 'react';
-import Navigation from './components/navigation/navigation'
+import {Navigation,Footer} from './components';
 import Home from './pages/home/home'
 const App = () => 
    (
-   <div>
+   <>
        <Navigation/>
        <Home/>
-   </div>
+       <Footer/>
+   </>
   );
 
 export default App;
