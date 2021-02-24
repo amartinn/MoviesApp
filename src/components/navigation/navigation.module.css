@@ -1,0 +1,13 @@
+.header{
+    background: #F8F9FA!important;
+    color: #000!important;
+}
+.header-toolbar{
+    padding:0px 10px!important;
+    display:flex!important;
+    justify-content:space-between;
+}
+.header-title{
+    font-size: 14px!important;
+    padding: 5px!important;
+}
