@@ -1,6 +1,6 @@
 import React from 'react'
 import {Navigation,Footer} from '../'
-const Layout = ({children}) => {
+const Layout = ({children,searchTerm,setSearchTerm}) => {
 
     return (
         <>
