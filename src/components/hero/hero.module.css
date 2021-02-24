@@ -1,0 +1,20 @@
+.hero-img{
+ border: 2px solid black;
+  padding: 25px;
+  background: url('https://www.teahub.io/photos/full/220-2205714_get-the-latest-movies-data-src-kodi-tv.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height:40vh;
+}
+.hero-text-wrapper{
+    color: #FFF;
+    max-width: 40%;
+    margin: 30px;
+}
+.hero-search-btn{
+    margin-left: 6px!important;
+    padding:5px!important;
+    color: #FFF!important;
+    font-size: 8px!important;
+    background: #0057D8!important;
+}
