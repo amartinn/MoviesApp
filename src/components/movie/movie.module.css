@@ -1,0 +1,29 @@
+.movie-outer-wrapper{
+    display:flex;
+    margin: 10px 30px;
+}
+.movie-wrapper{
+    margin-left: 30px;
+}
+.movie-title{
+    margin-bottom: 20px;
+}
+.movie-genre-wrapper{
+    margin: 10px 0px;
+}
+.movie-genre{
+    margin: 3px;
+}
+.favorite-btn{
+    padding:10px!important;
+    border-radius: 3px;
+    margin-top: 20px!important;
+}
+.red{
+    color: red!important;
+    border: 2px solid red!important;
+}
+.green{
+    color: green!important;
+    border: 2px solid green!important;;
+}

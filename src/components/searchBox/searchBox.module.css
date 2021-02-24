@@ -1,5 +1,6 @@
 .search-wrapper{
     display: flex;
+    justify-content: center;
 }
 .search-input{
     border: 1px solid #CED4DA!important;
@@ -14,5 +15,4 @@
     padding:5px!important;
     border: 1px solid #63A85E!important;
     color: #63A85E!important;
-    font-size: 10px!important;
 }
