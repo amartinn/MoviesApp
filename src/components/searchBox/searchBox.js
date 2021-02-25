@@ -1,14 +1,14 @@
 import React,{useState} from 'react'
 import styles from './searchBox.module.css'
-import {InputBase,Button} from '@material-ui/core'
-import {Link,BrowserRouter} from 'react-router-dom';
+import {InputBase} from '@material-ui/core'
+import {Link} from 'react-router-dom'
 const SearchBox = () => {
     const [term,setTerm] = useState('')
     const clickHandler = () => setTerm('')
    return (
    <div className={styles['search-wrapper']}>
         <InputBase
-            placeholder="Search by movie name..."
+            placeholder='Search by movie name...'
             onChange={(e) => {setTerm(e.target.value)}}
             classes={{
                 input: styles['search-input'],
@@ -20,6 +20,6 @@ const SearchBox = () => {
     </div>
     )
 }
-export default SearchBox;
+export default SearchBox
 
 

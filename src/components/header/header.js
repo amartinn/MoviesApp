@@ -6,10 +6,10 @@ import { AppBar, Toolbar, Typography } from '@material-ui/core'
 
 
 const Header = () => (
-    <AppBar className={styles.header} position="static">
-        <Toolbar className={styles["header-toolbar"]}> 
-            <Typography className={styles["header-title"]} variant="h6" noWrap>
-               <Link className={styles["header-title-link"]} to={'/'}> My Movie Collection</Link>
+    <AppBar className={styles.header} position='static'>
+        <Toolbar className={styles['header-toolbar']}> 
+            <Typography className={styles['header-title']} variant='h6' noWrap>
+               <Link className={styles['header-title-link']} to={'/'}> My Movie Collection</Link>
           </Typography>
           <SearchBox/>
         </Toolbar>
@@ -17,4 +17,4 @@ const Header = () => (
 )
 
 
-export default Header;
+export default Header

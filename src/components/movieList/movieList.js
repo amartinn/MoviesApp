@@ -2,15 +2,14 @@ import React from 'react'
 import { Movie } from '../'
 import styles from './movieList.module.css'
 
-import { Container,Typography } from '@material-ui/core'
+import { Container } from '@material-ui/core'
 
 
 const MovieList = ({movies}) => {
-    console.log(movies)
     return (
-        <Container className={styles["movies-wrapper"]}>                
+        <Container className={styles['movies-wrapper']}>                
         {movies && movies.map((movie) => {
-            return <Movie key={movie.id} {...movie}/>
+            return <Movie key={movie.id} movie={movie}/>
         })}
     </Container>
     )

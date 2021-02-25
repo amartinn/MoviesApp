@@ -12,9 +12,11 @@
     margin: 30px;
 }
 .hero-search-btn{
-    margin-left: 6px!important;
-    padding:5px!important;
+    padding:5px 10px!important;
     color: #FFF!important;
-    font-size: 8px!important;
+    font-size: 20px!important;
     background: #0057D8!important;
+    text-decoration: none!important;
+    border-radius:10px;
+
 }

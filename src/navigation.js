@@ -9,7 +9,10 @@ const Navigation = () => (
           <Route exact path="/" component={Home} ></Route>
         </Switch>
         <Switch>
-          <Route path="/search/:query" component={Search} ></Route>
+          <Route exact path="/search/:query" component={Search} ></Route>
+        </Switch>
+        <Switch>
+          <Route exact path="/search" component={Search} ></Route>
         </Switch>
         </Layout>
       </Router>
