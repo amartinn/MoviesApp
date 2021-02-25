@@ -1,33 +1,30 @@
 import React, { createContext, useReducer, useEffect } from 'react'
-import AppReducer from './appReducer'
+import GlobalReducer from '../reducers/globalReducer'
+import LS from '../utils/localStorageHelper'
 
-const item = localStorage.getItem('_favorites')
+const languageKey = '_language'
+const userKey = '_userId'
 const initialState = {
-    favoriteMovies: item ? JSON.parse(item) : []
+    language: LS.getItem(languageKey) ?? 'en-US',
+    userId: LS.getItem(userKey) ?? ''
 }
 
 
 export const GlobalContext = createContext(initialState)
 
 export const GlobalProvider = props => {
-    const [state, dispatch] = useReducer(AppReducer, initialState)
-
+    const [state, dispatch] = useReducer(GlobalReducer, initialState)
     useEffect(() => {
-        localStorage.setItem('_favorites',JSON.stringify(state.favoriteMovies))
+        LS.setItem(languageKey,state.language)
     })
 
-    const addToFavorites = movie => {
-        dispatch({ type: 'ADD_MOVIE_TO_FAVORITES', payload: movie })
-    }
-    const removeFromFavorites = movie => {
-        dispatch({ type: 'REMOVE_MOVIE_FROM_FAVORITES', payload: movie })
+    const changeLanguage = language => {
+        dispatch({ type: 'CHANGE_LANGUAGE', payload: language})
     }
     return (
         <GlobalContext.Provider
          value={{ 
-            favoriteMovies: state.favoriteMovies, 
-            addToFavorites: addToFavorites, 
-            removeFromFavorites: removeFromFavorites,
+            changeLanguage: changeLanguage
         }}>
             {props.children}
         </GlobalContext.Provider>

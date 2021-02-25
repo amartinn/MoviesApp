@@ -8,7 +8,7 @@ const exports = {
         return axios.get(url).then(info => info.data)
     },
     getMovieById: (movieId) => {
-        const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&append_to_response=videos`
+        const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}`
         return axios.get(url).then(info => info.data)
       },
 }

@@ -1,21 +1,21 @@
 import React,{useContext,useState,useEffect} from 'react'
-import { GlobalContext } from '../../context/globalState'
+import { MovieContext } from '../../context/movieState'
 import styles from './movie.module.css'
 import genres from '../../utils/genreHelper'
 import { Typography, Chip, Button } from '@material-ui/core'
 import CONSTANTS from '../../utils/globalConstants'
-const Movie = ({ movie,haveLink }) => {
-
+const Movie = ({movie,isFavorite}) => {
     const {DEFAULT_IMAGE_URL,IMAGE_URL} = CONSTANTS
-    const {addToFavorites,removeFromFavorites,favoriteMovies} =  useContext(GlobalContext)
-    const contains = favoriteMovies.find(x=> x.id === movie.id)
-    const [isFavorite,setFavorite] = useState(contains)
+    const {addToFavorites,removeFromFavorites} =  useContext(MovieContext)
     const [buttonText,setButtonText] = useState('')
     const [buttonClass,setButtonClass] = useState('')
-
-    const posterURL = movie.poster_path === null ? DEFAULT_IMAGE_URL : IMAGE_URL + movie.poster_path
-
-
+    
+    let posterURL;
+    if(movie.poster_path === null || movie.poster_path === undefined){
+        posterURL = DEFAULT_IMAGE_URL
+    }else{
+        posterURL = IMAGE_URL +  movie.poster_path
+    }
     useEffect(() => {
         if(isFavorite){
             setButtonText('Remove From Favorites')
@@ -35,12 +35,9 @@ const Movie = ({ movie,haveLink }) => {
             addToFavorites(movie)
         }
         
-        setFavorite(!isFavorite)
+        isFavorite = !isFavorite
     }
-    const getGenreText = genreValue => {
-        const data = genres.filter(genre => genre.id === genreValue)[0]
-        return data.name
-    }
+    const getGenreText = genreValue => (genres.filter(genre => genre.id === genreValue)[0].name)
     return (
         <article className={styles['movie-outer-wrapper']} >
             <article className={styles['movie-wrapper-image']}>

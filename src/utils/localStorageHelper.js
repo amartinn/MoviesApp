@@ -1,25 +1,25 @@
 
 
-const itemKey = '_userId'
+
 const isLocalStorageAvailable = typeof localStorage !== 'undefined'
 
-const userHelper = {
-    setUser : (userId) => {
+const localStorageHelper = {
+    setItem : (key,value) => {
        
         if(!isLocalStorageAvailable){
             throw Error('localstorage is not available')
         }
-        localStorage.setItem(itemKey,userId)
+        localStorage.setItem(key,value)
         
     }, 
-    getUser : () => {
+    getItem : (key) => {
         if(!isLocalStorageAvailable){
             throw Error('localstorage is not available')
         }
-        return localStorage.getItem(itemKey)
+        return localStorage.getItem(key)
     }
 }
 
 
 
-export default userHelper
+export default localStorageHelper

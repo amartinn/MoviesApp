@@ -1,10 +1,11 @@
 import React,{useContext} from 'react'
 import {FavoriteMovie} from '../'
 import styles from './favoriteMovieList.module.css'
-import { GlobalContext } from '../../context/globalState'
+
+import { MovieContext } from '../../context/movieState'
 import {Container} from '@material-ui/core'
 const FavoriteMovieList = () => {  
-     const {favoriteMovies} =  useContext(GlobalContext)
+     const {favoriteMovies} =  useContext(MovieContext)
     return (favoriteMovies.length >0 ? <>
     <h2>Your Favorites</h2>
    <Container className = {styles['favorite-movie-wrapper']}>
