@@ -5,7 +5,6 @@ import { GlobalContext } from '../../context/globalState'
 import {Container} from '@material-ui/core'
 const FavoriteMovieList = () => {  
      const {favoriteMovies} =  useContext(GlobalContext)
-     console.log(favoriteMovies)
     return (favoriteMovies.length >0 ? <>
     <h2>Your Favorites</h2>
    <Container className = {styles['favorite-movie-wrapper']}>
