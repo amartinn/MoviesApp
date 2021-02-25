@@ -11,3 +11,8 @@
     font-size: 14px!important;
     padding: 5px!important;
 }
+.header-title-link{
+    text-decoration: none;
+    color: #000!important;
+    padding: 10px!important;
+}

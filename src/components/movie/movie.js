@@ -17,8 +17,8 @@ class Movie extends React.Component {
             overview : props.overview === '' ? 'No overview found...`' : props.overview,
             release_year : props.release_date.split('-')[0],
             isFavorite : localStorageHelper.isFavorite(props.id),
-            buttonText : localStorageHelper.isFavorite(props.id) === true ? 'Remove From Favorites' : 'Add To Favorites',
-            buttonClass : localStorageHelper.isFavorite(props.id) === true ? 'red' : 'green'
+            buttonText : localStorageHelper.isFavorite(props.id)  ? 'Remove From Favorites' : 'Add To Favorites',
+            buttonClass : localStorageHelper.isFavorite(props.id)  ? 'red' : 'green'
         }
     }
     handleClick = e => {
@@ -32,8 +32,8 @@ class Movie extends React.Component {
             isFavorite = true
         }
         this.setState({isFavorite})
-        this.state.buttonText = isFavorite  === true ? 'Remove From Favorites' : 'Add To Favorites'
-        this.state.buttonClass = isFavorite === true ? 'red' : 'green'
+        this.state.buttonText = isFavorite  ? 'Remove From Favorites' : 'Add To Favorites'
+        this.state.buttonClass = isFavorite ? 'red' : 'green'
         
     }
 

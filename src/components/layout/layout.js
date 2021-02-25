@@ -1,10 +1,10 @@
 import React from 'react'
-import {Navigation,Footer} from '../'
+import {Header,Footer} from '../'
 const Layout = ({children,searchTerm,setSearchTerm}) => {
 
     return (
         <>
-        <Navigation/>
+        <Header/>
         {children}
         <Footer/>
         </>

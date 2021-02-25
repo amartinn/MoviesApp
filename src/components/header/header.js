@@ -1,15 +1,15 @@
 import React from 'react'
-import styles from './navigation.module.css'
+import styles from './header.module.css'
 import SearchBox from '../searchBox/searchBox.js'
 import {Link} from 'react-router-dom'
 import { AppBar, Toolbar, Typography } from '@material-ui/core'
 
 
-const Navigation = () => (
+const Header = () => (
     <AppBar className={styles.header} position="static">
         <Toolbar className={styles["header-toolbar"]}> 
             <Typography className={styles["header-title"]} variant="h6" noWrap>
-               <Link to={'/'}> My Movie Collection</Link>
+               <Link className={styles["header-title-link"]} to={'/'}> My Movie Collection</Link>
           </Typography>
           <SearchBox/>
         </Toolbar>
@@ -17,4 +17,4 @@ const Navigation = () => (
 )
 
 
-export default Navigation;
+export default Header;

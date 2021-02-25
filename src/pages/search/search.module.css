@@ -1,12 +1,3 @@
 .search-wrapper{
     margin:40px;
-    text-align: center;
-    justify-content:center;
-}
-.movies-wrapper{
-    text-align: center;
-}
-.error-word{
-    color: red;
-    display: block;
 }

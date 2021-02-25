@@ -1,7 +1,7 @@
 import React from 'react';
 import {Hero,FavoriteMovieList} from '../../components'
 
-const Home = () => {
+const HomePage = () => {
 
     return (
     <div>
@@ -11,4 +11,4 @@ const Home = () => {
         )
 }
 
-export default Home
+export default HomePage
