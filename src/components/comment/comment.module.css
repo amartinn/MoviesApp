@@ -1,0 +1,6 @@
+.textarea{
+    resize: none!important;
+}
+.textarea:focus{
+     outline: none!important;
+ }

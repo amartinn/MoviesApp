@@ -7,7 +7,8 @@ import FavoriteMovieList from './favoriteMovieList/favoriteMovieList'
 import Layout from './layout/layout'
 import Movie from './movie/movie'
 import MovieList from './movieList/movieList'
-
+import Stars from './stars/stars'
+import Comment from './comment/comment'
 export {
     Hero,
     Header,
@@ -18,4 +19,6 @@ export {
     Layout,
     Movie,
     MovieList,
+    Stars,
+    Comment,
 }

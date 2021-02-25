@@ -2,18 +2,18 @@ import React,{useContext,useState,useEffect} from 'react'
 import { GlobalContext } from '../../context/globalState'
 import styles from './movie.module.css'
 import genres from '../../utils/genreHelper'
-import { Typography, Chip, Button, } from '@material-ui/core'
-const IMAGE_URL = 'https://image.tmdb.org/t/p/w500'
-const DEFAULT_IMAGE_URL = 'https://www.personaltrainermarylebone.com/wp-content/uploads/2015/04/200x300.gif'
+import { Typography, Chip, Button } from '@material-ui/core'
+import CONSTANTS from '../../utils/globalConstants'
+const Movie = ({ movie,haveLink }) => {
 
-const Movie = ({ movie }) => {
+    const {DEFAULT_IMAGE_URL,IMAGE_URL} = CONSTANTS
     const {addToFavorites,removeFromFavorites,favoriteMovies} =  useContext(GlobalContext)
     const contains = favoriteMovies.find(x=> x.id === movie.id)
     const [isFavorite,setFavorite] = useState(contains)
     const [buttonText,setButtonText] = useState('')
     const [buttonClass,setButtonClass] = useState('')
 
-    const posterURl = movie.poster_path === null ? DEFAULT_IMAGE_URL : IMAGE_URL + movie.poster_path
+    const posterURL = movie.poster_path === null ? DEFAULT_IMAGE_URL : IMAGE_URL + movie.poster_path
 
 
     useEffect(() => {
@@ -44,16 +44,16 @@ const Movie = ({ movie }) => {
     return (
         <article className={styles['movie-outer-wrapper']} >
             <article className={styles['movie-wrapper-image']}>
-                <img width='200' height='300' src={posterURl} alt={movie.title}></img>
+                <img width='200' height='300' src={posterURL} alt={movie.title}></img>
             </article>
             <article className={styles['movie-wrapper']}>
-                <Typography variant='h4' className={styles['movie-title']}>{movie.title} ({movie.release_date ? movie.release_date.split('-')[0] : 'unknown'})</Typography>
+                <Typography variant='h4' className={styles['movie-title']}>{movie.title} ({movie.release_date && movie.release_date.split('-')[0]})</Typography>
                 <article className={styles['movie-genre-wrapper']}>
-                    {movie.genre_ids.map(genre => {
+                    {movie.genre_ids && movie.genre_ids.map(genre => {
                         return <Chip className={styles['movie-genre']} key={genre} label={getGenreText(genre)} ></Chip>
                     })}
                 </article>
-                <Typography>{movie.overview.substring(0,250)}</Typography>
+                <Typography>{movie.overview && movie.overview.substring(0,250)}</Typography>
 
                 <Button className={`${styles['favorite-btn']} ${styles[buttonClass]}`} onClick={clickHandler}>{buttonText}</Button>
             </article>
