@@ -1,12 +1,24 @@
 .search-wrapper{
     margin:40px;
-    text-align: center;
-    justify-content:center;
 }
-.movies-wrapper{
-    text-align: center;
+.search-wrapper{
+    display: flex;
+    justify-content: center;
 }
-.error-word{
-    color: red;
-    display: block;
+.search-input{
+    border: 1px solid #CED4DA!important;
+    background: #FFF!important;
+    font-size: 12px!important;
+    border-radius: 5px;
+    padding:10px!important;
+    width:100%!important;
+}
+.search-btn{
+    margin-left: 6px!important;
+    padding:5px 10px!important;
+    font-size: 18px!important;
+    border: 1px solid #63A85E!important;
+    color: #63A85E!important;
+    text-decoration: none!important;
+    border-radius: 5px;
 }

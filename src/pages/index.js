@@ -1,8 +1,8 @@
-import Home from './home/home'
-import Search from './search/search'
+import Home from './home'
+import Search from './search'
 
 
 export {
     Home,
     Search
-}
+}   
