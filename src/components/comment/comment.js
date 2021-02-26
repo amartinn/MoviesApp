@@ -2,6 +2,8 @@ import React,{useState,useContext} from 'react'
 import styles from './comment.module.css'
 import { MovieContext } from '../../context/movieState'
 import { useParams } from 'react-router-dom'
+import translate from '../../translations'
+
 const Comment = () => {
 
     const { id } = useParams()
@@ -13,7 +15,7 @@ const Comment = () => {
         updateComment(id,e.target.value)
     }
     return (
-    <textarea className={styles.textarea} value={comment} onChange={changeHandler} placeholder="Your private notes and comments about the movie" rows="10" cols="80"></textarea>
+    <textarea className={styles.textarea} value={comment} onChange={changeHandler} placeholder={translate('comment.placeholder')} rows="10" cols="80"></textarea>
     )
 }
 

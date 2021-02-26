@@ -4,12 +4,12 @@ import styles from './movie.module.css'
 import genres from '../../utils/genreHelper'
 import { Typography, Chip, Button } from '@material-ui/core'
 import CONSTANTS from '../../utils/globalConstants'
+import translate from '../../translations'
 const Movie = ({movie,isFavorite}) => {
     const {DEFAULT_IMAGE_URL,IMAGE_URL} = CONSTANTS
     const {addToFavorites,removeFromFavorites} =  useContext(MovieContext)
     const [buttonText,setButtonText] = useState('')
     const [buttonClass,setButtonClass] = useState('')
-    
     let posterURL;
     if(movie.poster_path === null || movie.poster_path === undefined){
         posterURL = DEFAULT_IMAGE_URL
@@ -18,11 +18,11 @@ const Movie = ({movie,isFavorite}) => {
     }
     useEffect(() => {
         if(isFavorite){
-            setButtonText('Remove From Favorites')
+            setButtonText(translate('removeFromFavorites.btn'))
             setButtonClass('red')
         }
         else{
-            setButtonText('Add To Favorites')
+            setButtonText(translate('addToFavites.btn'))
             setButtonClass('green')
         }
     },[isFavorite])
@@ -37,7 +37,7 @@ const Movie = ({movie,isFavorite}) => {
         
         isFavorite = !isFavorite
     }
-    const getGenreText = genreValue => (genres.filter(genre => genre.id === genreValue)[0].name)
+    const getGenreText = genreValue => (genres.filter(genre => genre.id === genreValue)[0].name.replace(' ','_').toLowerCase())
     return (
         <article className={styles['movie-outer-wrapper']} >
             <article className={styles['movie-wrapper-image']}>
@@ -47,7 +47,7 @@ const Movie = ({movie,isFavorite}) => {
                 <Typography variant='h4' className={styles['movie-title']}>{movie.title} ({movie.release_date && movie.release_date.split('-')[0]})</Typography>
                 <article className={styles['movie-genre-wrapper']}>
                     {movie.genre_ids && movie.genre_ids.map(genre => {
-                        return <Chip className={styles['movie-genre']} key={genre} label={getGenreText(genre)} ></Chip>
+                        return <Chip className={styles['movie-genre']} key={genre} label={translate(`genre.${getGenreText(genre)}`)} ></Chip>
                     })}
                 </article>
                 <Typography>{movie.overview && movie.overview.substring(0,250)}</Typography>

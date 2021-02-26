@@ -9,6 +9,7 @@ import Movie from './movie/movie'
 import MovieList from './movieList/movieList'
 import Stars from './stars/stars'
 import Comment from './comment/comment'
+import LanguageDropdown from './languageDropdown/languageDropdown'
 export {
     Hero,
     Header,
@@ -21,4 +22,5 @@ export {
     MovieList,
     Stars,
     Comment,
+    LanguageDropdown
 }
