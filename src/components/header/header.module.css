@@ -16,3 +16,10 @@
     color: #000!important;
     padding: 10px!important;
 }
+.nav ul {
+    display: flex;
+}
+.nav ul li{
+    list-style-type: none;
+    padding: 0px 10px;
+}

@@ -1,22 +1,21 @@
 .hero-img{
- border: 2px solid black;
   padding: 25px;
   background: url('https://www.teahub.io/photos/full/220-2205714_get-the-latest-movies-data-src-kodi-tv.jpg');
+  background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover;   
   height:40vh;
+  filter: blur(4px);
+  -webkit-filter: blur(4px);
+  
 }
 .hero-text-wrapper{
+    position:absolute;
+    top:130px;
     color: #FFF;
     max-width: 40%;
     margin: 30px;
 }
-.hero-search-btn{
-    padding:5px 10px!important;
-    color: #FFF!important;
-    font-size: 20px!important;
-    background: #0057D8!important;
-    text-decoration: none!important;
-    border-radius:10px;
-
+.hero-text-description{
+    margin-bottom: 30px!important;
 }

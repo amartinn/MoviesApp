@@ -1,6 +1,7 @@
 const reducer = (state, action) => {
     switch (action.type) {
-        case 'CHANGE_LANG':
+        case 'CHANGE_LANGUAGE':
+            console.log(action.payload)
             return {
                 ...state,
                 language: action.payload,
