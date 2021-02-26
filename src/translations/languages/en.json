@@ -28,5 +28,7 @@
     "comment.placeholder":"Your private notes and comments about the movie",
     "favorite.section.text" : "Your favorite movies",
     "search.no_results":"No results for:",
-    "footer.text": "Made with ❤️ by Martin Angelov"
+    "footer.text": "Made with ❤️ by Martin Angelov",
+    "error.text": "Page not found",
+    "go.to.homepage" :"Go to Home Page"
 }

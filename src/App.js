@@ -7,11 +7,12 @@ import {MovieProvider} from './context/movieState'
 
 const App = () => {
 
- return ( <GlobalProvider>
-      <MovieProvider>
-         <Navigation/>
-      </MovieProvider>
-      </GlobalProvider>
+ return (
+ <GlobalProvider>
+   <MovieProvider>
+      <Navigation/>
+   </MovieProvider>
+</GlobalProvider>
  )
 
 }

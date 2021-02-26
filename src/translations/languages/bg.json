@@ -26,7 +26,9 @@
     "genre.western": "Уестърн",
     "rating.text": "Вашият Рейтинг",
     "comment.placeholder":"Вашите лични бележки и коментари за филма",
-    "favorite.section.placeholder" : "Вашите любими филми",
+    "favorite.section.text" : "Вашите любими филми",
     "search.no_results":"Няма открити резултати за:",
-    "footer.text": "Направено с ❤️ от Мартин Ангелов"
+    "footer.text": "Направено с ❤️ от Мартин Ангелов",
+    "error.text": "Страницата не е намерена",
+    "go.to.homepage" :"Отиди на началната страница"
 }

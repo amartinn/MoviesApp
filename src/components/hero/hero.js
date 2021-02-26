@@ -16,7 +16,7 @@ const Hero = () => {
                     <Typography className={styles['hero-text-description']}>
                     {translate('hero.description')}
                     </Typography>
-                    <Link to='/search' className={styles['hero-search-btn']}>{translate('search.btn')}</Link>
+                   
                 </article>  
         </section>
     )
