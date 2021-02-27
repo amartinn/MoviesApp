@@ -35,7 +35,7 @@ class HTTP {
                 }
             })
     }
-    delete(url,body) {
+    delete(url, body) {
         const config = {
             url,
             method: 'GET',

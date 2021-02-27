@@ -1,19 +1,16 @@
-
-
-
 const isLocalStorageAvailable = typeof localStorage !== 'undefined'
 
 const localStorageHelper = {
-    setItem : (key,value) => {
-       
-        if(!isLocalStorageAvailable){
+    setItem: (key, value) => {
+
+        if (!isLocalStorageAvailable) {
             throw Error('localstorage is not available')
         }
-        localStorage.setItem(key,value)
-        
-    }, 
-    getItem : (key) => {
-        if(!isLocalStorageAvailable){
+        localStorage.setItem(key, value)
+
+    },
+    getItem: (key) => {
+        if (!isLocalStorageAvailable) {
             throw Error('localstorage is not available')
         }
         return localStorage.getItem(key)

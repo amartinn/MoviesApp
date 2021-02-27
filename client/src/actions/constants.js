@@ -6,3 +6,5 @@ export const UPDATE_COMMENT = 'UPDATE_COMMENT'
 export const UPDATE_RATING = 'UPDATE_RATING'
 
 export const UPDATE_LANGUAGE = 'UPDATE_LANGUAGE'
+
+export const SET_USER = 'SET_USER'

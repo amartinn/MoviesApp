@@ -1,22 +1,25 @@
-import {UPDATE_COMMENT} from '../actions/constants'
-const initialState ={
-    comments: []
-}
+import {
+    UPDATE_COMMENT
+} from '../actions/constants'
+const initialState = []
 
-const comment = (state = initialState,action) => {
-    switch(action.type){
-        case UPDATE_COMMENT:{
-            const currentComments = state.comments
-            const {movieId,comment} = action.payload
+const comment = (state = initialState, action) => {
+    switch (action.type) {
+        case UPDATE_COMMENT: {
+            const currentComments = state
+            const {
+                movieId,
+                comment
+            } = action.payload
             const filteredComments = currentComments.filter(x => x.movieId !== movieId)
-            filteredComments.push({movieId,comment})
-            return {
-                ...state,
-                comments: [...filteredComments]
-            }
-            
+            filteredComments.push({
+                movieId,
+                comment
+            })
+            return [...filteredComments]
+
         }
-        default:{
+        default: {
             return state
         }
     }

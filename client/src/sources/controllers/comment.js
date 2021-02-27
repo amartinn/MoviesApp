@@ -1,10 +1,12 @@
+class Comment {
 
-class Comment{
+    updateComment(movieId, comment) {
 
-    updateComment(movieId,comment){
-        
         return new Promise((resolve, reject) => {
-            resolve({movieId,comment})
+            resolve({
+                movieId,
+                comment
+            })
         })
     }
 }

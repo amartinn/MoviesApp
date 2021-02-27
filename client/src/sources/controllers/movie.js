@@ -21,7 +21,7 @@ class Movie {
         // })
 
         return new Promise((resolve, reject) => {
-            resolve({movies:movie})
+            resolve(movie)
         })
     }
     removeFromFavorites(movie) {
@@ -39,7 +39,7 @@ class Movie {
         // })
 
         return new Promise((resolve, reject) => {
-            resolve({movies:movie})
+            resolve(movie)
         })
     }
 }

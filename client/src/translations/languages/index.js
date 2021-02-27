@@ -1,7 +1,7 @@
 import en from './en.json'
 import bg from './bg.json'
 
-export default  {
+export default {
   en,
   bg
 }
