@@ -2,7 +2,6 @@ import {ADD_MOVIE_TO_FAVORITES, REMOVE_MOVIE_FROM_FAVORITES} from './constants'
 import APP from '../sources'
 
 export const addToFavorites = (movie) => {
-    console.log(movie)
     return dispatch => {
         return APP.movies.addToFavorites(movie).then(json => {
             return dispatch({
@@ -14,8 +13,12 @@ export const addToFavorites = (movie) => {
 
 }
 export const removeFromFavorites = (movie) => {
-    return {
-        type: REMOVE_MOVIE_FROM_FAVORITES,
-        payload: movie
+    return dispatch => {
+        return APP.movies.removeFromFavorites(movie).then(json => {
+            return dispatch({
+                type: REMOVE_MOVIE_FROM_FAVORITES,
+                payload: json.movies
+            })
+        })
     }
 }

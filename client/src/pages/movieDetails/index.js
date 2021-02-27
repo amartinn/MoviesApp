@@ -13,7 +13,7 @@ const MovieDetails = _ => {
     }, [id])
     return (
         <>
-            <Movie isFavorite={true}></Movie>
+            <Movie movie={movie}></Movie>
             <article className={styles['review-section']}>
                 <Stars />
                 <Comment/>

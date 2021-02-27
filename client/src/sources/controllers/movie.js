@@ -28,14 +28,18 @@ class Movie {
         const body = {
             movie
         }
-        return new Promise((resolve,reject) => {
-            HTTP.delete(REMOVE_FROM_FAVORITES,body).then(json => {
-                if (!json.error) {
-                    resolve(json)
-                } else {
-                    reject(json)
-                }
-            })
+        // return new Promise((resolve,reject) => {
+        //     HTTP.delete(REMOVE_FROM_FAVORITES,body).then(json => {
+        //         if (!json.error) {
+        //             resolve(json)
+        //         } else {
+        //             reject(json)
+        //         }
+        //     })
+        // })
+
+        return new Promise((resolve, reject) => {
+            resolve({movies:movie})
         })
     }
 }

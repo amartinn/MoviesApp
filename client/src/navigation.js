@@ -2,8 +2,10 @@ import React from 'react'
 import { Layout } from './components'
 import { Home, Search, MovieDetails, Error } from './pages'
 import { BrowserRouter as Router, Switch, Route, } from 'react-router-dom'
-const Navigation = _ =>
-(
+
+const Navigation = _ => {
+
+return (
   <Router>
     <Layout>
       <Switch>
@@ -16,6 +18,6 @@ const Navigation = _ =>
     </Layout>
   </Router>
 )
-
+}
 
 export default Navigation
