@@ -1,13 +1,18 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, {useState, useEffect } from "react";
 import styles from "./movie.module.css";
 import genres from "../../utils/genreHelper";
 import { Typography, Chip, Button } from "@material-ui/core";
-import CONSTANTS from "../../utils/globalConstants";
-import translate from "../../translations";
-
-const Movie = ({ movie, isFavorite }) => {
+import * as ACTIONS from '../../actions/movie'
+import { bindActionCreators } from 'redux'
+import {connect} from 'react-redux'
+import CONSTANTS from '../../utils/globalConstants'
+import translate from '../../translations'
+const Movie = (props) => {
   const { DEFAULT_IMAGE_URL, IMAGE_URL } = CONSTANTS;
-  // const { addToFavorites, removeFromFavorites } = useContext(MovieContext);
+  const {movies,movie} = props;
+  const {addToFavorites,removeFromFavorites} = props.actions;
+  let isFavorite = movies.find(x => x.id === movie.id)
+
   const [buttonText, setButtonText] = useState("");
   const [buttonClass, setButtonClass] = useState("");
   let posterURL;
@@ -28,9 +33,9 @@ const Movie = ({ movie, isFavorite }) => {
 
   const clickHandler = () => {
     if (isFavorite) {
-      // removeFromFavorites(movie);
+       removeFromFavorites(movie);
     } else {
-      // addToFavorites(movie);
+      addToFavorites(movie);
     }
     isFavorite = !isFavorite;
   };
@@ -75,4 +80,19 @@ const Movie = ({ movie, isFavorite }) => {
     </article>
   );
 };
-export default Movie;
+
+const mapStateToProps = state => {
+    return {
+         movies: state.movies.movies
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    const actions = ACTIONS
+    const actionMap = { actions: bindActionCreators(actions, dispatch) }
+    return actionMap
+}
+
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(Movie)

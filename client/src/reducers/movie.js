@@ -1,29 +1,28 @@
-import {
-    ADD_MOVIE_TO_FAVORITES,
-    REMOVE_MOVIE_FROM_FAVORITES
-} from '../actions/constants'
+import {ADD_MOVIE_TO_FAVORITES, REMOVE_MOVIE_FROM_FAVORITES} from '../actions/constants'
+const initialState ={
+    movies: []
+}
 
+const movie = (state = initialState,action) => {
 
-const reducer = (state = {}, action) => {
-    
-    switch (action.type){
+    switch(action.type){
         case ADD_MOVIE_TO_FAVORITES:{
             return {
                 ...state,
-                favoriteMovies:[...state.favoriteMovies,action.payload]
+                movies:[...state.movies,action.payload]
             }
+            
         }
-        case REMOVE_MOVIE_FROM_FAVORITES:{
+        case REMOVE_MOVIE_FROM_FAVORITES: {
             return {
                 ...state,
-                favoriteMovies:[...state.favoriteMovies.filter(movie => movie.id !== action.payload.movieId)]
+                movies:[...state.movies.filter(x => x.id !== action.payload.id)]
             }
         }
-
         default:{
             return state
         }
     }
 }
 
-export default reducer
+export default movie
