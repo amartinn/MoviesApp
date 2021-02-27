@@ -1,5 +1,4 @@
 import React, { useContext, useState, useEffect } from "react";
-import { MovieContext } from "../../context/movieState";
 import styles from "./movie.module.css";
 import genres from "../../utils/genreHelper";
 import { Typography, Chip, Button } from "@material-ui/core";
@@ -8,7 +7,7 @@ import translate from "../../translations";
 
 const Movie = ({ movie, isFavorite }) => {
   const { DEFAULT_IMAGE_URL, IMAGE_URL } = CONSTANTS;
-  const { addToFavorites, removeFromFavorites } = useContext(MovieContext);
+  // const { addToFavorites, removeFromFavorites } = useContext(MovieContext);
   const [buttonText, setButtonText] = useState("");
   const [buttonClass, setButtonClass] = useState("");
   let posterURL;
@@ -29,9 +28,9 @@ const Movie = ({ movie, isFavorite }) => {
 
   const clickHandler = () => {
     if (isFavorite) {
-      removeFromFavorites(movie);
+      // removeFromFavorites(movie);
     } else {
-      addToFavorites(movie);
+      // addToFavorites(movie);
     }
     isFavorite = !isFavorite;
   };

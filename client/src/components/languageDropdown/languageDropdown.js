@@ -1,14 +1,10 @@
 import React,{useState,useContext} from 'react'
 import {Select} from '@material-ui/core'
-import {GlobalContext} from '../../context/globalState'
 
-const LanguageDropdown = () => {    
-    const {changeLanguage, language} = useContext(GlobalContext)
-    const [langValue,setLangValue] = useState(language)
+const LanguageDropdown = () => {
+    const [langValue,setLangValue] = useState('us')
     const handleChange = e => {
         setLangValue(e.target.value)
-        console.log(e.target.value)
-        changeLanguage(e.target.value)
     }
     return (
         <Select
