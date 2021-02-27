@@ -15,6 +15,7 @@ const Movie = (props) => {
 
   const [buttonText, setButtonText] = useState("");
   const [buttonClass, setButtonClass] = useState("");
+  
   let posterURL;
   if (movie.poster_path === null || movie.poster_path === undefined) {
     posterURL = DEFAULT_IMAGE_URL;
