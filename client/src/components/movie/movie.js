@@ -1,16 +1,23 @@
-import React, { useContext, useState, useEffect } from "react";
-import { MovieContext } from "../../context/movieState";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import styles from "./movie.module.css";
-import genres from "../../utils/genreHelper";
+import getGenreText from "../../utils/genreHelper";
 import { Typography, Chip, Button } from "@material-ui/core";
+import * as ACTIONS from "../../actions/movie";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
 import CONSTANTS from "../../utils/globalConstants";
 import translate from "../../translations";
 
-const Movie = ({ movie, isFavorite }) => {
+const Movie = (props) => {
   const { DEFAULT_IMAGE_URL, IMAGE_URL } = CONSTANTS;
-  const { addToFavorites, removeFromFavorites } = useContext(MovieContext);
+  const { movies, movie, isLink } = props;
+  const { addToFavorites, removeFromFavorites } = props.actions;
+  let isFavorite = movies.find((x) => x?.id === movie.id) ?? false;
+
   const [buttonText, setButtonText] = useState("");
   const [buttonClass, setButtonClass] = useState("");
+
   let posterURL;
   if (movie.poster_path === null || movie.poster_path === undefined) {
     posterURL = DEFAULT_IMAGE_URL;
@@ -35,16 +42,21 @@ const Movie = ({ movie, isFavorite }) => {
     }
     isFavorite = !isFavorite;
   };
-  const getGenreText = (genreValue) =>
-    genres
-      .find((genre) => genre.id === genreValue)
-      .name
-      .replace(" ", "_")
-      .toLowerCase();
   return (
     <article className={styles["movie-outer-wrapper"]}>
       <article className={styles["movie-wrapper-image"]}>
-        <img width="200" height="300" src={posterURL} alt={movie.title}></img>
+        {isLink ? (
+          <Link to={`/movies/${movie.id}`}>
+            <img
+              width="200"
+              height="300"
+              src={posterURL}
+              alt={movie.title}
+            ></img>
+          </Link>
+        ) : (
+          <img width="200" height="300" src={posterURL} alt={movie.title}></img>
+        )}
       </article>
       <article className={styles["movie-wrapper"]}>
         <Typography variant="h4" className={styles["movie-title"]}>
@@ -76,4 +88,17 @@ const Movie = ({ movie, isFavorite }) => {
     </article>
   );
 };
-export default Movie;
+
+const mapStateToProps = (state) => {
+  return {
+    movies: state.movies,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  const actions = ACTIONS;
+  const actionMap = { actions: bindActionCreators(actions, dispatch) };
+  return actionMap;
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Movie);

@@ -1,14 +1,13 @@
-import React from 'react';
-import {Hero,FavoriteMovieList} from '../../components'
+import React from "react";
+import { Hero, FavoriteMovieList } from "../../components";
 
 const HomePage = () => {
-
-    return (
+  return (
     <div>
-        <Hero/>
-        <FavoriteMovieList/>
+      <Hero />
+      <FavoriteMovieList />
     </div>
-        )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;

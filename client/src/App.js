@@ -1,20 +1,10 @@
-import React from 'react'
-import Navigation from './navigation'
-
-import {GlobalProvider} from './context/globalState'
-import {MovieProvider} from './context/movieState'
+import React from "react";
+import Navigation from "./navigation";
 
 
 const App = () => {
-
- return (
- <GlobalProvider>
-   <MovieProvider>
-      <Navigation/>
-   </MovieProvider>
-</GlobalProvider>
- )
-
+  return <Navigation></Navigation>;
 }
 
-export default App;
+
+export default App
