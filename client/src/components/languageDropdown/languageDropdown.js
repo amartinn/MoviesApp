@@ -1,10 +1,15 @@
-import React,{useState,useContext} from 'react'
+import React,{useState} from 'react'
 import {Select} from '@material-ui/core'
-
-const LanguageDropdown = () => {
-    const [langValue,setLangValue] = useState('us')
+import * as ACTIONS from '../../actions/language'
+import { bindActionCreators } from 'redux'
+import {connect} from 'react-redux'
+const LanguageDropdown = ({language,actions}) => {
+    
+    const {updateLanguage} = actions
+    const [langValue,setLangValue] = useState(language)
     const handleChange = e => {
         setLangValue(e.target.value)
+        updateLanguage(e.target.value)
     }
     return (
         <Select
@@ -22,4 +27,18 @@ const LanguageDropdown = () => {
     )
 }
 
-export default LanguageDropdown
+const mapStateToProps = state => {
+  return {
+       language: state.language
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  const actions = ACTIONS
+  const actionMap = { actions: bindActionCreators(actions, dispatch) }
+  return actionMap
+}
+
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(LanguageDropdown)
