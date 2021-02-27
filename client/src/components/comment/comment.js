@@ -6,7 +6,6 @@ import * as ACTIONS from '../../actions/comment'
 import { bindActionCreators } from 'redux'
 import {connect} from 'react-redux'
 const Comment = (props) => {
-    console.log(props)
     const { id } = useParams()
     const {updateComment} = props.actions
     const {comments} = props

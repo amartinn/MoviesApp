@@ -4,12 +4,19 @@ import ReactStars from "react-rating-stars-component";
 import { Typography } from '@material-ui/core'
 import { useParams } from 'react-router-dom'
 import translate from '../../translations'
-const Stars = () => {
+import * as ACTIONS from '../../actions/rating'
+import { bindActionCreators } from 'redux'
+import {connect} from 'react-redux'
+
+const Stars = ({actions,ratings}) => {
     const { id } = useParams()
-    const [rating,setRating] = useState(0)
+     const currentRating = ratings.find(x => x.movieId === id);
+    const [rating,setRating] = useState(currentRating?.rating ?? 0)
+    const {updateRating} = actions
 
     const ratingChanged = (newRating) => {
         setRating(newRating)
+        updateRating(id,newRating)
     }
 
     return (
@@ -20,4 +27,17 @@ const Stars = () => {
     )
 } 
 
-export default Stars
+
+const mapStateToProps = state => {
+    return {
+         ratings: state.ratings.ratings
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    const actions = ACTIONS
+    const actionMap = { actions: bindActionCreators(actions, dispatch) }
+    return actionMap
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Stars)
