@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Select } from "@material-ui/core";
 import * as ACTIONS from "../../actions/language";
 import { bindActionCreators } from "redux";
