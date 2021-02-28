@@ -10,4 +10,4 @@ module.exports = (app) => {
         extended: false
     }))
     app.use(bodyParser.json())
-}
+}   
