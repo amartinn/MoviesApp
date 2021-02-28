@@ -1,7 +1,9 @@
 import en from './en.json'
 import bg from './bg.json'
 
-export default {
+const languages = {
   en,
   bg
 }
+
+export default languages
