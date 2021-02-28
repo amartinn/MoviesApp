@@ -1,15 +1,12 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const Model = mongoose.model;
-const { String, ObjectId } = Schema.Types;
+const { String, ObjectId, Number } = Schema.Types;
 const Joi = require('joi')
 
 const userSchema = new Schema({
-    userId: {
-        type: String,
-        unique: true
-    },
-    favoriteMovies: [String],
+    _id:String,
+    favoriteMovies: [Number],
     comments:[{type: ObjectId,ref:'Comments'}],
     ratings: [{type: ObjectId,ref:'Ratings'}]
 })
