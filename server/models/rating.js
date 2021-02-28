@@ -21,14 +21,14 @@ const ratingSchema = ({
 })
 
 
-ratingSchema.methods = {
-    joiValidate: (obj) => {
-        const schema = {
-            movieId: Joi.types.String().require(),
-            rating: Joi.types.Number().required(),
-        }
-        return Joi.validate(obj,schema)
-    }
-}
+// ratingSchema.methods = {
+//     joiValidate: (obj) => {
+//         const schema = {
+//             movieId: Joi.types.String().require(),
+//             rating: Joi.types.Number().required(),
+//         }
+//         return Joi.validate(obj,schema)
+//     }
+// }
 
 module.exports = new Model('Ratings',ratingSchema)

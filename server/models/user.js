@@ -14,13 +14,13 @@ const userSchema = new Schema({
     ratings: [{type: ObjectId,ref:'Ratings'}]
 })
 
-userSchema.methods = {
-    joiValidate: (obj) => {
-        const schema = {
-            userId: Joi.types.String().require(),
-        }
-        return Joi.validate(obj,schema)
-    }
-}
+// userSchema.methods = {
+//     joiValidate: (obj) => {
+//         const schema = {
+//             userId: Joi.types.String().require(),
+//         }
+//         return Joi.validate(obj,schema)
+//     }
+// }
 
 module.exports = new Model('Users',userSchema)

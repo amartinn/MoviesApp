@@ -21,14 +21,14 @@ const commentSchema = ({
 })
 
 
-commentSchema.methods = {
-    joiValidate: (obj) => {
-        const schema = {
-            movieId: Joi.types.String().require(),
-            body: Joi.types.String().required(),
-        }
-        return Joi.validate(obj,schema)
-    }
-}
+// commentSchema.methods = {
+//     joiValidate: (obj) => {
+//         const schema = {
+//             movieId: Joi.types.String().require(),
+//             body: Joi.types.String().required(),
+//         }
+//         return Joi.validate(obj,schema)
+//     }
+// }
 
 module.exports = new Model('Comments',commentSchema)
