@@ -10,6 +10,7 @@ App that let you search,rate and add your favorite movies.
 1. [Stack](https://github.com/amartinn/MoviesApp#stack)
 2. [Routing](https://github.com/amartinn/MoviesApp#routing)
 3. [Backend endpoints](https://github.com/amartinn/MoviesApp#backend-endpoints)
+4. [Screenshots](https://github.com/amartinn/MoviesApp#screenshots)
 ## Stack
 Main libraries:
 - React
@@ -171,5 +172,13 @@ endpoint: /api/user </br>
 request : none
 response: Created User
 
+
+## Screenshots:
+**Home Page:**
+![](https://github.com/amartinn/MoviesApp/blob/master/screenshots/home.png)
+**Search Page:**
+![](https://github.com/amartinn/MoviesApp/blob/master/screenshots/search.png)
+**Details Page:**
+![](https://github.com/amartinn/MoviesApp/blob/master/screenshots/details.png)
 
 
