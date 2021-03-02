@@ -14,18 +14,19 @@ class Comment extends React.Component {
       updateComment: props.actions.updateComment,
       createComment: props.actions.createComment,
       comments: props.comments,
-      commentBody: props.comments.find(x => x.movieId === props.match.params.id)?.body ?? ''
+      commentBody: props.comments.find(x => Number(x.movieId) === Number(props.match.params.id))?.body ?? ''
     };
     this.changeHandler = this.changeHandler.bind(this)
     this.blurHandler = this.blurHandler.bind(this)
   }
   componentDidMount() {
-    const exists = this.state.comments.find(x => x.movieId === this.state.movieId)
-    if(exists){
-      this.setState({
-        commentBody:exists.body
-      })
-    }
+    this.props.actions.getComments().then(c => {
+      this.setState(
+        {comments:[...c.payload],
+        commentBody: c.payload.find(x => Number(x.movieId) === Number(this.state.movieId))?.body ?? ''
+        }
+        )
+    })
   }
   blurHandler(e) {
     const movieId = this.state.movieId;

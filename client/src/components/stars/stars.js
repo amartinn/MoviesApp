@@ -1,44 +1,62 @@
-import React, { useState} from "react";
+import React from "react";
 import styles from "./stars.module.css";
 import ReactStars from "react-rating-stars-component";
 import { Typography } from "@material-ui/core";
-import { useParams } from "react-router-dom";
 import translate from "../../translations";
 import * as ACTIONS from "../../actions/rating";
-import { bindActionCreators } from "redux";
+import { bindActionCreators,compose } from "redux";
 import { connect } from "react-redux";
+import { withRouter } from "react-router";
 
-const Stars = ({ actions, ratings }) => {
-  const { id } = useParams();
-  const exists = ratings.find(x => x.movieId === id)
-  const [rating, setRating] = useState(exists?.rating ?? 0);
-  const { updateRating,createRating } = actions;
+class Stars extends React.Component {
 
-  const ratingChanged = (newRating) => {
-    const exists = ratings.find(x => x.movieId === id);
+  constructor(props){
+    super(props)
+    this.state = {
+      movieId: this.props.match.params.id,
+      updateRating : this.props.actions.updateRating,
+      createRating : this.props.actions.createRating,
+      getRatings: this.props.actions.getRatings,
+      rating: props.ratings.find(x => Number(x.movieId) === Number(props.match.params.id))?.rating ?? 0,
+      ratings: []
+    }
+    this.ratingChanged = this.ratingChanged.bind(this)
+  }
+  async componentDidMount(){
+     const {payload} = await this.state.getRatings()
+     const initialRating = await payload.find(x => Number(x.movieId) === Number(this.state.movieId))?.rating ?? 0
+     this.setState({
+      ratings: [...payload], 
+      rating: initialRating
+    })
+  }
+    ratingChanged(newRating) {
+    const exists = this.state.ratings.find(x => x.movieId === this.state.movieId);
     if(exists)
     {
-      updateRating(id,newRating);
+      this.state.updateRating(this.state.movieId,newRating);
     }
     else{
-      createRating(id,newRating)
+      this.state.createRating(this.state.movieId,newRating)
     }
-    setRating(newRating)
+    this.setState({rating:newRating})
   };
-  return (
+  render(){
+      return (
     <>
       <Typography variant="h4">{translate("rating.text")}</Typography>
       <ReactStars
         className={styles.stars}
-        value={rating}
+        value={this.state.rating}
         count={5}
-        onChange={ratingChanged}
+        onChange={this.ratingChanged}
         size={50}
         activeColor="#ffd700"
       />
     </>
   );
-};
+  }
+}
 
 const mapStateToProps = (state) => {
   return {
@@ -52,4 +70,8 @@ const mapDispatchToProps = (dispatch) => {
   return actionMap;
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Stars);
+
+export default compose(
+  withRouter,
+  connect(mapStateToProps, mapDispatchToProps)
+)(Stars);

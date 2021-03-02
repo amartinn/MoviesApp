@@ -16,7 +16,6 @@ class FavoriteMovie extends React.Component {
     };
   }
   componentWillMount() {
-    console.log(this.state.movieId);
     API.getMovieById(this.state.movieId).then((data) => {
       this.setState({
          movie: data,
