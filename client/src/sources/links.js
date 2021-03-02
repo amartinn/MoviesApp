@@ -1,4 +1,4 @@
-const SERVER_URL = 'https://m0v1es-app.loca.lt'
+const SERVER_URL = 'https://movies-appps.herokuapp.com'
 export const ADD_TO_FAVORITES = `${SERVER_URL}/api/movies/add`
 export const REMOVE_FROM_FAVORITES = `${SERVER_URL}/api/movies/remove`
 export const GET_FAVORITE_MOVIES = `${SERVER_URL}/api/movies`
