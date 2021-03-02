@@ -169,8 +169,8 @@ response: The list of ratings for that user
 
 method: **POST** </br>
 endpoint: /api/user </br>
-request : none
-response: Created User
+request : none </br>
+response: Created User's id
 
 
 ## Screenshots:
