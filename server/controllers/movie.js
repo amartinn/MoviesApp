@@ -11,27 +11,26 @@ module.exports = {
     },
     addToFavorites: (req, res, next) => {
         const {userId,movieId} = req.body
-        models.User.findOne({_id:userId})
+        models.User.updateOne({_id:userId},{$push: {favoriteMovies:movieId}})
+        .then(_ => {
+            return models.User.findById(userId)
+        })
         .then(user => {
-           return Promise.all([
-               models.User.updateOne({_id:userId},{$push: {favoriteMovies:movieId}}),
-               models.User.findOne({_id:userId})
-           ])
-        }).then(([modifiedObj,user]) => {
             res.send(user.favoriteMovies)
-        }).catch(next)
+        })
+        .catch(next)
+
 
     },
     removeFromFavorites: (req, res, next) => {
         const {userId,movieId} = req.body
-        models.User.findOne({_id:userId})
+        models.User.updateOne({_id:userId},{$pull: {favoriteMovies:movieId}})
+        .then(_ => {
+            return models.User.findById(userId)
+        })
         .then(user => {
-            return Promise.all([
-                models.User.updateOne({_id:userId},{$pull: {favoriteMovies:movieId}}),
-                models.User.findById(userId)
-            ])
-         }).then(([modifiedObj,user]) => {
-             res.send(user.favoriteMovies)
-         }).catch(next)
+            res.send(user.favoriteMovies)
+        })
+        .catch(next)
     }
 }
