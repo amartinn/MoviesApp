@@ -21,16 +21,19 @@ class App extends React.Component {
   }
   componentDidMount(){
     this.setOrGetUser().then(_ => {
-      //this.state.getComments()
+      this.state.getComments()
       this.state.getMovies()
-      //this.state.getRatings()
+      this.state.getRatings()
     })
   }
   setOrGetUser(){
+    //gets the userId from localStorage
     const user = getUserId();
     if (!user) {
+      //fetches to backend to create new user and sets userId in local storage
       return new Promise((resolve) => resolve(this.state.setUser()));
     } else {
+      //returns the movieId from local storage
       return new Promise((resolve) => resolve(this.state.getUser()));
     }
   }
