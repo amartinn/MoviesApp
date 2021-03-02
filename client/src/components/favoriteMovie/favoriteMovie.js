@@ -31,8 +31,8 @@ class FavoriteMovie extends React.Component {
           <img
             src={this.state.posterPath}
             alt="movie"
-            width="100"
-            height="150"
+            width="250"
+            height="300"
           ></img>
         </Card>
       </Link>
