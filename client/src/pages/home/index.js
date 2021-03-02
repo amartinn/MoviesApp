@@ -1,9 +1,10 @@
 import React from "react";
-import { Hero, FavoriteMovieList } from "../../components";
+import { Hero, FavoriteMovieList,MetaTags } from "../../components";
 
 const HomePage = () => {
   return (
     <>
+    <MetaTags/>
       <Hero />
       <FavoriteMovieList />
     </>

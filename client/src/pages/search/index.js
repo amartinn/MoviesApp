@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styles from "./search.module.css";
-import { SearchBox } from "../../components";
+import { SearchBox,MetaTags } from "../../components";
 import API from "../../utils/dataHelper";
 import { Movie } from "../../components";
 import { Container, Typography } from "@material-ui/core";
@@ -23,6 +23,7 @@ const Search = (props) => {
   }, [query,getMovies]);
   return (
     <>
+        <MetaTags/>
       <article className={styles["search-wrapper"]}>
         <SearchBox />
       </article>

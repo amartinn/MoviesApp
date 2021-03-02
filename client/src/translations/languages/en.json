@@ -1,4 +1,7 @@
 {
+    "project.keywords": "Movies, search",
+    "project.title": "Movies App",
+    "project.description": "Looking for the most talked about TV shows and movies from the around the world? They're all here",
     "hero.description": "Looking for the most talked about TV shows and movies from the around the world? They're all here",
     "hero.heading": "A movie website",
     "search.btn": "Search",

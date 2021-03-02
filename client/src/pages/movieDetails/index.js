@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import API from "../../utils/dataHelper";
-import { Movie, Stars, Comment } from "../../components";
+import { Movie, Stars, Comment,MetaTags } from "../../components";
 import styles from "./movieDetails.module.css";
 const MovieDetails = () => {
   const { id } = useParams();
@@ -13,6 +13,7 @@ const MovieDetails = () => {
   }, [id]);
   return (
     <>
+        <MetaTags/>
       <Movie movie={movie}></Movie>
       <article className={styles["review-section"]}>
         <Stars />
