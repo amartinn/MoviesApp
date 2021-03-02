@@ -1,9 +1,9 @@
 .hero-img{
-  padding: 25px;
+  padding: 50px;
   background: url('https://www.teahub.io/photos/full/220-2205714_get-the-latest-movies-data-src-kodi-tv.jpg');
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;   
+  background-size:cover;   
   height:40vh;
   filter: blur(4px);
   -webkit-filter: blur(4px);

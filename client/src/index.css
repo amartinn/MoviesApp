@@ -3,13 +3,10 @@ body{
   margin: 0;
   box-sizing: border-box;
 }
-#ajax{
-  position:absolute;
-}
 #ajax img{
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  z-index:3000
+  transform: translate(50%, 50%);
+  z-index:9999
 }
