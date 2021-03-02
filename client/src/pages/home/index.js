@@ -3,10 +3,10 @@ import { Hero, FavoriteMovieList } from "../../components";
 
 const HomePage = () => {
   return (
-    <div>
+    <>
       <Hero />
       <FavoriteMovieList />
-    </div>
+    </>
   );
 };
 

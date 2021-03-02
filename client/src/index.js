@@ -7,7 +7,6 @@ import configStore from './stores'
 
 const store = configStore({})
 
-//DISPATCH
 ReactDOM.render(
   <Provider store={store}>
     <App />

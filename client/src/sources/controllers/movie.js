@@ -1,45 +1,45 @@
 import {
     ADD_TO_FAVORITES,
-    REMOVE_FROM_FAVORITES
+    REMOVE_FROM_FAVORITES,
+    GET_FAVORITE_MOVIES
 } from '../links'
 import HTTP from '../HTTP'
-
+import * as userHelper from '../../utils/userHelper'
 class Movie {
-    addToFavorites(movie) {
+    constructor(){
+        this.addToFavorites = this.addToFavorites.bind(this)
+        this.getAll = this.getAll.bind(this)
+    }
+    addToFavorites(movieId) {
         const body = {
-            movie
+            movieId,
+            userId: this.userId
         }
-        // WILL UNCOMMENT IT OUT WHEN BACKEND API IS DONE.
-        // return new Promise((resolve, reject) => {
-        //     HTTP.post(ADD_TO_FAVORITES,body).then(json => {
-        //         if (!json.error) {
-        //             resolve(json)
-        //         } else {
-        //             reject(json)
-        //         }
-        //     })
-        // })
-
         return new Promise((resolve, reject) => {
-            resolve(movie)
+            HTTP.post(ADD_TO_FAVORITES,body).then(json => {
+                resolve(json)
+            })
         })
+    }
+    get userId(){
+        return userHelper.getUserId()
     }
     removeFromFavorites(movie) {
         const body = {
-            movie
+            movieId:movie,
+            userId:this.userId
         }
-        // return new Promise((resolve,reject) => {
-        //     HTTP.delete(REMOVE_FROM_FAVORITES,body).then(json => {
-        //         if (!json.error) {
-        //             resolve(json)
-        //         } else {
-        //             reject(json)
-        //         }
-        //     })
-        // })
-
         return new Promise((resolve, reject) => {
-            resolve(movie)
+            HTTP.delete(REMOVE_FROM_FAVORITES,body).then(json =>{
+                resolve(json)
+            })
+        })
+    }
+    getAll(){
+        return new Promise((resolve, reject) => {
+            HTTP.get(GET_FAVORITE_MOVIES + `?userId=${this.userId}`).then(json => {
+                resolve(json)
+            })
         })
     }
 }

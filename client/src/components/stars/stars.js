@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import styles from "./stars.module.css";
 import ReactStars from "react-rating-stars-component";
 import { Typography } from "@material-ui/core";
@@ -10,15 +10,21 @@ import { connect } from "react-redux";
 
 const Stars = ({ actions, ratings }) => {
   const { id } = useParams();
-  const currentRating = ratings.find((x) => x.movieId === id);
-  const [rating, setRating] = useState(currentRating?.rating ?? 0);
-  const { updateRating } = actions;
+  const exists = ratings.find(x => x.movieId === id)
+  const [rating, setRating] = useState(exists?.rating ?? 0);
+  const { updateRating,createRating } = actions;
 
   const ratingChanged = (newRating) => {
-    setRating(newRating);
-    updateRating(id, newRating);
+    const exists = ratings.find(x => x.movieId === id);
+    if(exists)
+    {
+      updateRating(id,newRating);
+    }
+    else{
+      createRating(id,newRating)
+    }
+    setRating(newRating)
   };
-
   return (
     <>
       <Typography variant="h4">{translate("rating.text")}</Typography>
