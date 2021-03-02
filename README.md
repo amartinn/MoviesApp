@@ -44,7 +44,7 @@ request :  </br>
       userId: string
 }
 ```
-response: Created movie
+response: The user's movie list
 
 **Remove movie from favorites:**
 
