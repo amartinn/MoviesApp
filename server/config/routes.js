@@ -7,4 +7,6 @@ module.exports = (app) => {
     app.use('/api/comments', router.comment)
 
     app.use('/api/ratings', router.rating)
+
+    app.use('/api/user',router.user)
 };

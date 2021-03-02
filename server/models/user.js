@@ -4,7 +4,6 @@ const Model = mongoose.model;
 const { String, ObjectId, Number } = Schema.Types;
 
 const userSchema = new Schema({
-    _id:String,
     favoriteMovies: [Number],
     comments:[{type: ObjectId,ref:'Comments'}],
     ratings: [{type: ObjectId,ref:'Ratings'}]

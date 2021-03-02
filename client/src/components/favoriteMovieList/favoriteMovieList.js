@@ -14,8 +14,8 @@ const FavoriteMovieList = (props) => {
       <h2>{translate("favorite.section.text")}</h2>
       <Container className={styles["favorite-movie-wrapper"]}>
         {favoriteMovies &&
-          favoriteMovies.map((movie) => {
-            return <FavoriteMovie key={movie.id} movie={movie} />;
+          favoriteMovies.map((movieId) => {
+            return <FavoriteMovie key={movieId} movieId={movieId} />;
           })}
       </Container>
     </>

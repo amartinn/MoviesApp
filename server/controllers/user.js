@@ -1,10 +1,11 @@
 const models = require('../models')
+module.exports  = {
 
-module.exports = async (userId) => {
-    const exists = await models.User.findById(userId)
-
-    if(!exists){
-        return  models.User.create({_id:userId})
+    set: (req,res,next) => {
+        
+        models.User.create({})
+        .then(user => {
+            res.send(user._id)
+        })
     }
-    return models.User.findById(userId)
 }

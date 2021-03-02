@@ -7,14 +7,20 @@ import { Movie } from "../../components";
 import { Container, Typography } from "@material-ui/core";
 import translate from "../../translations";
 
-const Search = () => {
+import * as ACTIONS from "../../actions/movie";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+
+const Search = (props) => {
   const { query } = useParams();
   const [movies, setMovies] = useState([]);
+  const {getMovies} = props.actions
   useEffect(() => {
+    getMovies()
     API.getMoviesByQuery(query).then((data) => {
       setMovies(data.results);
     });
-  }, [query]);
+  }, [query,getMovies]);
   return (
     <>
       <article className={styles["search-wrapper"]}>
@@ -23,7 +29,7 @@ const Search = () => {
       <Container className={styles["movies-wrapper"]}>
         {movies.length !== 0 ? (
           movies.map((movie) => {
-            return <Movie key={movie.id} isLink={true} movie={movie} />;
+            return <Movie key={movie.id} isFavorite={true} isLink={true} movie={movie} />;
           })
         ) : (
           <Typography variant="h3">
@@ -36,4 +42,17 @@ const Search = () => {
   );
 };
 
-export default Search;
+
+const mapStateToProps = (state) => {
+  return {
+    movies: state.movies,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  const actions = ACTIONS;
+  const actionMap = { actions: bindActionCreators(actions, dispatch) };
+  return actionMap;
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search);

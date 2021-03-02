@@ -1,5 +1,7 @@
 import {
-    UPDATE_RATING
+    UPDATE_RATING,
+    CREATE_RATING,
+    GET_RATINGS
 } from '../actions/constants'
 const initialState = []
 
@@ -17,6 +19,12 @@ const rating = (state = initialState, action) => {
                 rating
             })
             return [...filteredRatings]
+        }
+        case CREATE_RATING: {
+            return [...state, action.payload]
+        }
+        case GET_RATINGS: {
+            return [...action.payload]
         }
         default: {
             return state

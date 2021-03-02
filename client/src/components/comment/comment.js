@@ -1,31 +1,59 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./comment.module.css";
-import { useParams } from "react-router-dom";
 import translate from "../../translations";
 import * as ACTIONS from "../../actions/comment";
-import { bindActionCreators } from "redux";
+import { bindActionCreators, compose } from "redux";
 import { connect } from "react-redux";
-const Comment = (props) => {
-  const { id } = useParams();
-  const { updateComment } = props.actions;
-  const { comments } = props;
-  const commentObj = comments.find((x) => x.movieId === id);
-  const [comment, setComment] = useState(commentObj?.comment ?? "");
-  const changeHandler = async (e) => {
-    setComment(e.target.value);
-    updateComment(id, e.target.value);
-  };
-  return (
-    <textarea
+import { withRouter } from "react-router";
+
+class Comment extends React.Component {
+  constructor(props) {
+    super();
+    this.state = {
+      movieId: props.match.params.id,
+      updateComment: props.actions.updateComment,
+      createComment: props.actions.createComment,
+      comments: props.comments,
+      commentBody: props.comments.find(x => x.movieId === props.match.params.id)?.body ?? ''
+    };
+    this.changeHandler = this.changeHandler.bind(this)
+    this.blurHandler = this.blurHandler.bind(this)
+  }
+  componentDidMount() {
+    const exists = this.state.comments.find(x => x.movieId === this.state.movieId)
+    if(exists){
+      this.setState({
+        commentBody:exists.body
+      })
+    }
+  }
+  blurHandler(e) {
+    const movieId = this.state.movieId;
+    const exists = this.state.comments.find((x) => x.movieId === movieId);
+    if (exists) {
+      this.state.updateComment(movieId, e.target.value);
+    } else {
+      this.state.createComment(movieId, e.target.value);
+    }
+  }
+  changeHandler(e) {
+    this.setState({
+      commentBody:e.target.value
+    })
+  }
+  render() {
+    
+    return (<textarea
       className={styles.textarea}
-      value={comment}
-      onChange={changeHandler}
+      value={this.state.commentBody}
+      onChange={this.changeHandler}
+      onBlur={this.blurHandler}
       placeholder={translate("comment.placeholder")}
       rows="10"
       cols="80"
-    ></textarea>
-  );
-};
+    ></textarea>)
+  }
+}
 
 const mapStateToProps = (state) => {
   return {
@@ -39,4 +67,7 @@ const mapDispatchToProps = (dispatch) => {
   return actionMap;
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Comment);
+export default compose(
+  withRouter,
+  connect(mapStateToProps, mapDispatchToProps)
+)(Comment);

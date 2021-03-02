@@ -1,24 +1,43 @@
 import React, { useEffect } from "react";
 import { Header, Footer } from "../";
 import LS from "../../utils/localStorageHelper";
-import { v4 as uuid } from "uuid";
+import * as ACTIONS from "../../actions/user";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
 
-const Layout = ({ children }) => {
+const Layout = (props) => {
   //sets userId to localStorage if there isn't one.
   useEffect(() => {
     const key = "_userId";
     const user = LS.getItem(key);
+    const {setUser,getUser} = props.actions;
     if (!user) {
-      LS.setItem(key, uuid());
+      setUser()
     }
-  }, []);
+    else{
+      getUser()
+    }
+  }, [props.actions]);
   return (
     <>
       <Header />
-      {children}
+      {props.children}
       <Footer />
     </>
   );
 };
 
-export default Layout;
+const mapStateToProps = (state) => {
+  return {
+    userId: state.user,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  const actions = ACTIONS;
+  const actionMap = { actions: bindActionCreators(actions, dispatch) };
+  return actionMap;
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Layout);
+
