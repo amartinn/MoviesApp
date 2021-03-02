@@ -11,11 +11,11 @@ import translate from "../../translations";
 
 const Movie = (props) => {
   const { DEFAULT_IMAGE_URL, IMAGE_URL } = CONSTANTS;
-  const {movie, isLink } = props
-  const { addToFavorites, removeFromFavorites} = props.actions
+  const { movie, isLink } = props;
+  const { addToFavorites, removeFromFavorites } = props.actions;
   const [buttonText, setButtonText] = useState("");
   const [buttonClass, setButtonClass] = useState("");
-  let isFavorite = props.movies.find(x => x === movie.id)
+  let isFavorite = props.movies.find((x) => x === movie.id);
   let posterURL;
   if (movie.poster_path === null || movie.poster_path === undefined) {
     posterURL = DEFAULT_IMAGE_URL;
@@ -37,7 +37,7 @@ const Movie = (props) => {
       removeFromFavorites(movie.id);
     } else {
       addToFavorites(movie.id);
-    } 
+    }
     isFavorite = !isFavorite;
   };
   return (
