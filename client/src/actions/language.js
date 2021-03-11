@@ -7,7 +7,7 @@ export const updateLanguage = (language) => {
         // if language is changed, the page reloads so the new language is applied
         if (isLanguageChanged) {
             LS.setItem('_language', language)
-            window.location.reload()
+         //    window.location.reload()
         }
 
         return dispatch({

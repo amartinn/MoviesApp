@@ -27,6 +27,7 @@ const FavoriteMovieList = (props) => {
 const mapStateToProps = (state) => {
   return {
     movies: state.movies,
+    language:state.language
   };
 };
 

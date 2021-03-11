@@ -4,18 +4,20 @@ import * as ratingActions from "./actions/rating";
 import * as movieActions from "./actions/movie";
 import * as commentActions from "./actions/comment";
 import * as userActions from "./actions/user";
+import * as languageActions from "./actions/language";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { getUserId } from "./utils/userHelper";
 class App extends React.Component {
   constructor(props) {
-    super()
+    super(props)
     this.state = {
       getComments : props.actions.getComments,
       getRatings :props.actions.getRatings,
       getMovies :props.actions.getMovies,
       setUser : props.actions.setUser,
-      getUser : props.actions.getUser
+      getUser : props.actions.getUser,
+      language: props.language,
     }
     this.setOrGetUser = this.setOrGetUser.bind(this)
   }
@@ -47,6 +49,7 @@ const mapStateToProps = (state) => {
     movies: state.movies,
     comments: state.comments,
     user: state.user,
+    language:state.language
   };
 };
 
@@ -56,7 +59,8 @@ const mapDispatchToProps = (dispatch) => {
     ratingActions,
     movieActions,
     commentActions,
-    userActions
+    userActions,
+    languageActions
   );
   const actionMap = { actions: bindActionCreators(actions, dispatch) };
   return actionMap;

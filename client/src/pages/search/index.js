@@ -14,13 +14,14 @@ import { connect } from "react-redux";
 const Search = (props) => {
   const { query } = useParams();
   const [movies, setMovies] = useState([]);
-  const {getMovies} = props.actions
+  const {getMovies} = props.actions;
+  const {language} = props;
   useEffect(() => {
     getMovies()
     API.getMoviesByQuery(query).then((data) => {
       setMovies(data.results);
     });
-  }, [query,getMovies]);
+  }, [query,getMovies,language]);
   return (
     <>
         <MetaTags/>
@@ -47,6 +48,7 @@ const Search = (props) => {
 const mapStateToProps = (state) => {
   return {
     movies: state.movies,
+    language:state.language
   };
 };
 

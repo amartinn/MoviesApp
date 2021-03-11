@@ -15,6 +15,7 @@ const Movie = (props) => {
   const { addToFavorites, removeFromFavorites } = props.actions;
   const [buttonText, setButtonText] = useState("");
   const [buttonClass, setButtonClass] = useState("");
+  const language = props.language;
   let isFavorite = props.movies.find((x) => x === movie.id);
   let posterURL;
   if (movie.poster_path === null || movie.poster_path === undefined) {
@@ -30,7 +31,7 @@ const Movie = (props) => {
       setButtonText(translate("addToFavorites.btn"));
       setButtonClass("green");
     }
-  }, [isFavorite]);
+  }, [isFavorite,language]);
 
   const clickHandler = () => {
     if (isFavorite) {
@@ -90,6 +91,7 @@ const Movie = (props) => {
 const mapStateToProps = (state) => {
   return {
     movies: state.movies,
+    language: state.language,
   };
 };
 
